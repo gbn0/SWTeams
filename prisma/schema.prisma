@@ -1,0 +1,41 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Starship {
+  id Int @id
+  name String
+  model String
+  manufacturer String
+  cost String?
+  length String?
+  crewSize String?
+  consumables String?
+  cargo String?
+  isUsed Boolean @default(false)
+}
+
+model Person {
+  id Int @id
+  name String
+  height String?
+  gender String?
+  mass String?
+  isUsed Boolean @default(false)
+}
+
+model Team {
+  id Int @id @default(autoincrement())
+  char1 Int
+  char2 Int
+  char3 Int
+  starship Int
+}
